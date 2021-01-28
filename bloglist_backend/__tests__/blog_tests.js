@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Blog = require('../models/blog')
+const Blog = require('../models/Blog')
 const supertest = require('supertest')
 const app = require('../app')
 
