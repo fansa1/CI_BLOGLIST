@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "jest --verbose --runInBand"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
   },
   "author": "",
   "license": "ISC",
