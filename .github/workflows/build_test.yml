@@ -1,0 +1,26 @@
+name: build_test
+
+on:
+  push:
+    branches: [ master ]
+  
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
+
+
+jobs:
+
+  test_bloglist_frontend_build:
+    
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+
+      - name: npm install 
+        run: npm install  
+  
+      - name: build
+        run: npm run build
+
