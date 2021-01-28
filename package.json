@@ -1,8 +1,11 @@
 {
-  "name": "bloglist-frontend",
-  "version": "0.1.0",
+  "name": "bloglist frontend_& backend",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd bloglist_frontend && npm install && npm run build"
+    "build": "cd bloglist_frontend && npm install && npm run build",
+    "test_frontend": "cd bloglist_frontend && npm install && npm run test",
+    "start_backend": "cd bloglist_backend && npm install && npm run start",
+    "test_backend": "cd bloglist_backend && npm install && npm run test"
   }
 }
