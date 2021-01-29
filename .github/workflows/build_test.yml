@@ -19,10 +19,10 @@ jobs:
       - uses: actions/setup-node@v1
       - uses: SpicyPizza/create-envfile@v1
         with:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          PORT: ${{ secrets.PORT }}
-          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-          SECRET: ${{ secrets.SECRET }}
+          envkey_MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          envkey_PORT: ${{ secrets.PORT }}
+          envkey_TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          envkey_SECRET: ${{ secrets.SECRET }}
           directory: bloglist_backend
           file_name: .env
         
