@@ -17,14 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          envkey_PORT: ${{ secrets.PORT }}
-          envkey_TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-          envkey_SECRET: ${{ secrets.SECRET }}
-          directory: CI_BLOGLIST/bloglist_backend
-          file_name: .env
      
         
       - name: npm install 
@@ -38,4 +30,8 @@ jobs:
         
       - name: test backend
         run: npm run test_backend
-
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          PORT: ${{ secrets.PORT }}
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          SECRET: ${{ secrets.SECRET }}
