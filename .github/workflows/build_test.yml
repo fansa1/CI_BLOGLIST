@@ -41,7 +41,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "blogilist" 
           heroku_email: "samuel.fanta@helsinki.fi"
-          procfile: "web: npm start"
+          procfile: "web: node index.js"
           healthcheck: blogilist.herokuapp.com
           rollbackonhealthcheckfailed: true
         env:
