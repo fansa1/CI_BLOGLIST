@@ -22,9 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - uses: CallePuzzle/envvar-to-dotenv-action@0.1.0
-        with:
-          variableNames: MONGODB_URI, PORT, TEST_MONBODB_URI, SECRET 
      
       - name: npm install 
         run: npm install  
