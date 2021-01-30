@@ -23,7 +23,7 @@ const tokenExtractor = (request,response,next) => {
     next()
   }
 
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false})
+mongoose.connect(config.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false})
   .then(() => {
     logger.info('connected to MongoDB')
   })
