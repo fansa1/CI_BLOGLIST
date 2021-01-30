@@ -32,13 +32,12 @@ jobs:
       - name: create .env-file        
         run: |
           
-          echo "$PATH"
           touch .env
-          echo MONGODB_URI = ${{ secrets.MONGODB_URI }}
-          echo PORT =  ${{ secrets.PORT }}
-          echo TEST_MONGODB_URI =  ${{ secrets.TEST_MONGODB_URI }}
-          echo SECRET = ${{ secrets.SECRET }}
-          >> .env
+          echo MONGODB_URI = ${{ secrets.MONGODB_URI }} >> .env
+          echo PORT =  ${{ secrets.PORT }} >> .enc
+          echo TEST_MONGODB_URI =  ${{ secrets.TEST_MONGODB_URI }} >> .env
+          echo SECRET = ${{ secrets.SECRET }} >> .env
+          cat .env
           echo .env       
       #- name: test backend       
       #  run:  npm run test_backend
