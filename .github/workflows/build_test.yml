@@ -44,6 +44,7 @@ jobs:
           procfile: "web: node index.js"
           healthcheck: blogilist.herokuapp.com
           rollbackonhealthcheckfailed: true
+          appdir: ./bloglist_frontend/
         env:
           HD_MONGODB_URI:  ${{ secrets.MONGODB_URI }}
           HD_TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
