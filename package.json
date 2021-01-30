@@ -1,11 +1,33 @@
 {
-  "name": "bloglist",
+  "name": "blogi",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
+  "main": "index.js",
   "scripts": {
+    "start_backend": "node index.js",
     "build": "cd bloglist_frontend && npm install && npm run build",
     "test_frontend": "cd bloglist_frontend && npm install && npm run test",
-    "start_backend": "cd bloglist_backend && npm install && npm run start",
-    "test_backend": "cd bloglist_backend && npm install && npm run test"
+    "test_backend": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "watch": "cross-env NODE_ENV=development nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "Router": "^2.1.0",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.11.13",
+    "mongoose-unique-validator": "^2.0.3"
   }
 }
