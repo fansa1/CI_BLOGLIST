@@ -28,13 +28,16 @@ jobs:
       - name: test frontend
         run: npm run test_frontend
     
-      - name: test backend        
+      - name: create .env-file        
         run: |
-          touch /bloglist_backend/.env
+          touch .env
           echo MONGODB_URI = ${{ secrets.MONGODB_URI }}
           echo PORT =  ${{ secrets.PORT }}
           echo TEST_MONGODB_URI =  ${{ secrets.TEST_MONGODB_URI }}
           echo SECRET = ${{ secrets.SECRET }}
           >> .env
-          npm run test_backend
+          working-directory: bloglist_backend
+       
+      - name: test backend       
+        run:  npm run test_backend
     
