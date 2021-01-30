@@ -7,7 +7,12 @@ on:
   pull_request:
     branches: [master]
     types: [opened, synchronize]
-
+    
+env:
+  MONGODB_URI:  ${{ secrets.MONGODB_URI }
+  PORT:  ${{ secrets.PORT }}
+  TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
+  SECRET: ${{ secrets.SECRET }}
 
 jobs:
 
@@ -17,8 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - uses: CallePuzzle/envvar-to-dotenv-action@0.1.0
+        with:
+          variableNames: MONGODB_URI, PORT, TEST_MONBODB_URI, SECRET 
      
-        
       - name: npm install 
         run: npm install  
   
@@ -27,13 +34,7 @@ jobs:
         
      # - name: test frontend
      #  run: npm run test_frontend
-    
-     
+      
       - name: test backend
-        env:
-          MONGODB_URI:  ${{ secrets.MONGODB_URI }}
-          PORT:  ${{ secrets.PORT }}
-          TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
-          SECRET: ${{ secrets.SECRET }}
-        run:  npm run test_backend
+        run: npm run test_backend
     
