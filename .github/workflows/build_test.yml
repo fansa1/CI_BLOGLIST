@@ -25,13 +25,29 @@ jobs:
      
       - name: npm install 
         run: npm install  
-  
-     # - name: build
-     #   run: npm run build
         
-     # - name: test frontend
-     #  run: npm run test_frontend
+      - name: test frontend
+        run: npm run test_frontend
       
       - name: test backend
         run: npm run test_backend
-    
+        
+      - name: build
+        run: npm run build
+        
+      - uses: akhileshns/heroku-deploy@v3.8.9
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'skip') }} 
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "blogilist" 
+          heroku_email: "samuel.fanta@helsinki.fi"
+          procfile: "web: npm start"
+          healthcheck: blogilist.herokuapp.com
+          rollbackonhealthcheckfailed: true
+        env:
+          HD_MONGODB_URI:  ${{ secrets.MONGODB_URI }}
+          HD_PORT:  ${{ secrets.PORT }}
+          HD_TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
+          HD_SECRET: ${{ secrets.SECRET }}
+          
+
