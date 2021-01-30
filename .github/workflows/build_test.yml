@@ -22,21 +22,24 @@ jobs:
       - name: npm install 
         run: npm install  
   
-      - name: build
-        run: npm run build
+     # - name: build
+     #   run: npm run build
         
-      - name: test frontend
-        run: npm run test_frontend
+     # - name: test frontend
+     #  run: npm run test_frontend
+    
     
       - name: create .env-file        
         run: |
-          touch ../bloglist_backend/.env
+          
+          echo "$PATH"
+          touch .env
           echo MONGODB_URI = ${{ secrets.MONGODB_URI }}
           echo PORT =  ${{ secrets.PORT }}
           echo TEST_MONGODB_URI =  ${{ secrets.TEST_MONGODB_URI }}
           echo SECRET = ${{ secrets.SECRET }}
           >> .env
-       
-      - name: test backend       
-        run:  npm run test_backend
+          echo .env       
+      #- name: test backend       
+      #  run:  npm run test_backend
     
