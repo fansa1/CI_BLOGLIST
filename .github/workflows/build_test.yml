@@ -42,7 +42,7 @@ jobs:
           heroku_app_name: "arcane-savannah-36048" 
           heroku_email: "samuel.fanta@helsinki.fi"
           procfile: "web: node index.js"
-          healthcheck: arcane-savannah-36048.herokuapp.com
+          healthcheck: https://arcane-savannah-36048.herokuapp.com/
           rollbackonhealthcheckfailed: true
           appdir: "bloglist_backend"
         env:
