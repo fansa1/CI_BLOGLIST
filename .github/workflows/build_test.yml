@@ -11,7 +11,6 @@ on:
 env:
   SKIP_PREFLIGHT_CHECK: true
   MONGODB_URI:  ${{ secrets.MONGODB_URI }}
-  PORT:  ${{ secrets.PORT }}
   TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
   SECRET: ${{ secrets.SECRET }}
 
@@ -45,9 +44,9 @@ jobs:
           procfile: "web: node index.js"
           healthcheck: blogilist.herokuapp.com
           rollbackonhealthcheckfailed: true
+          appdir: ./bloglist_backend/
         env:
           HD_MONGODB_URI:  ${{ secrets.MONGODB_URI }}
-          HD_PORT:  ${{ secrets.PORT }}
           HD_TEST_MONGODB_URI:  ${{ secrets.TEST_MONGODB_URI }} 
           HD_SECRET: ${{ secrets.SECRET }}
           HD_SKIP_PREFLIGHT_CHECK: true
