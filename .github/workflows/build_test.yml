@@ -34,7 +34,14 @@ jobs:
         
       - name: build
         run: npm run build
-        
+
+      - uses: anothrNick/github-tag-action@1.33.0
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'skip')}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch 
+
       - uses: akhileshns/heroku-deploy@v3.8.9
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'skip') }} 
         with:
@@ -51,4 +58,3 @@ jobs:
           HD_SECRET: ${{ secrets.SECRET }}
           HD_SKIP_PREFLIGHT_CHECK: true
           
-
